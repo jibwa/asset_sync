@@ -161,12 +161,12 @@ module AssetSync
       gzipped = "#{path}/#{f}.gz"
       ignore = false
 
-      if config.gzip? && File.extname(f) == ".gz"
+      if true  && File.extname(f) == ".gz"
         # Don't bother uploading gzipped assets if we are in gzip_compression mode
         # as we will overwrite file.css with file.css.gz if it exists.
         log "Ignoring: #{f}"
         ignore = true
-      elsif config.gzip? && File.exists?(gzipped)
+      elsif true && File.exists?(gzipped)
         original_size = File.size("#{path}/#{f}")
         gzipped_size = File.size(gzipped)
 
@@ -183,7 +183,7 @@ module AssetSync
           log "Uploading: #{f} instead of #{gzipped} (compression increases this file by #{percentage}%)"
         end
       else
-        if !config.gzip? && File.extname(f) == ".gz"
+        if !true && File.extname(f) == ".gz"
           # set content encoding for gzipped files this allows cloudfront to properly handle requests with Accept-Encoding
           # http://docs.amazonwebservices.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html
           uncompressed_filename = f[0..-4]
